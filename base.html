@@ -1,0 +1,345 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Vault Password Manager</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: url("{% static 'images/logo.png' %}") no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: white;
+      }
+
+    .navbar{
+        background: rgba(41, 40, 40, 0.6);
+        padding: 15px;
+        display: flex;
+        justify-content: flex-end; /* moved to right */
+        gap: 25px;
+        backdrop-filter: blur(10px);
+    }
+
+      .navbar a{
+        color:white;
+        font-weight:bold;
+        text-decoration:none;
+        padding:8px 14px;
+        border-radius:6px;
+        transition:0.3s;
+      }
+
+      .navbar a:hover{
+        background:#00c6ff;
+        color:black;
+      }
+
+      .card {
+        background: rgba(102, 103, 104, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        color: #ffffff;
+        padding: 30px;
+        border-radius: 16px;
+        width: 380px;
+        margin: auto;
+        margin-top: 80px;
+        border: 1px solid rgba(0, 255, 255, 0.3);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.4),
+                    0 0 50px rgba(255, 0, 100, 0.2);
+      }
+
+      /* Neon Cyber Button */
+      button {
+        background: linear-gradient(135deg, #00f5ff, #ff0055);
+        color: white;
+        padding: 12px;
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: 0.3s ease;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
+      }
+
+      a {
+        color: #00f5ff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s ease;
+      }
+
+      a:hover {
+        color: #ff0055;
+        text-shadow: 0 0 8px rgba(255, 0, 85, 0.8);
+      }
+
+      .container{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:80vh;
+      }
+
+      .form-card, .delete-card{
+        background: rgba(68, 68, 68, 0.75);
+        padding:40px;
+        border-radius:10px;
+        width:420px;
+        color:white;
+        box-shadow:0 0 20px rgba(0,0,0,0.5);
+        margin:auto;
+      }
+
+      .update-btn, .delete-btn{
+        width:100%;
+        padding:10px;
+        margin-top:15px;
+        border:none;
+        border-radius:5px;
+        font-weight:bold;
+        cursor:pointer;
+      }
+
+      .update-btn{
+        background:linear-gradient(90deg,#00c6ff,#ff0066);
+        color:white;
+      }
+
+      .delete-btn{
+        background:red;
+        color:white;
+      }
+
+      .delete-btn:hover{
+        background:darkred;
+      }
+
+      .back-link{
+        display:block;
+        margin-top:15px;
+        color:#00e6ff;
+      }
+         /* Help Page Design */
+
+        .help-wrapper{
+        padding:40px;
+        text-align:center;
+        }
+
+        .title{
+        color: white;
+        margin-bottom:30px;
+        }
+
+        .help-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:25px;
+        }
+
+        .help-card{
+        background:white;
+        padding:25px;
+        border-radius:12px;
+        box-shadow:0 8px 20px rgba(0,0,0,0.1);
+        transition:0.3s;
+        }
+
+        .help-card:hover{
+        transform:translateY(-8px);
+        box-shadow:0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .help-card h3{
+        color:#2563eb;
+        margin-bottom:10px;
+        }
+
+        .help-card p{
+        color:#555;
+        font-size:14px;
+        }    
+        .title{
+text-align:center;
+margin-top:20px;
+}
+
+.add-btn{
+text-align:center;
+margin:20px;
+}
+
+.card-container{
+width:85%;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.vault-card{
+background:rgba(219, 255, 255, 0.3);
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.vault-card:hover{
+transform:scale(1.05);
+}
+
+.card-buttons{
+margin-top:10px;
+display:flex;
+gap:10px;
+}
+
+.update-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:5px;
+}
+
+.delete-btn{
+background:red;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:5px;
+}
+
+.logout{
+text-align:center;
+margin-top:30px;
+}
+
+.logout-btn{
+background:#222;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:6px;
+}  
+.card-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+width:80%;
+margin:auto;
+}
+
+.vault-card{
+background:white;
+padding:30px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+cursor:pointer;
+}
+
+.vault-card:hover{
+background:#f3f6ff;
+transform:scale(1.05);
+}
+.card-btn{
+margin-top:20px;
+text-align:center;
+}
+
+.back-btn{
+display:inline-block;
+padding:10px 30px;
+border-radius:25px;
+background:linear-gradient(90deg,#24c6dc,#ff2e63);
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.back-btn:hover{
+opacity:0.85;
+transform:scale(1.05);
+}   
+.add-btn{
+    text-align:center;
+    margin:20px 0;
+}
+
+.add-password-btn{
+    padding:10px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(90deg,#24c6dc,#ff2e63);
+    color:white;
+    cursor:pointer;
+    width:auto;       /* prevents full width */
+}       
+.hero-section{
+text-align:center;
+padding:120px 20px;
+color:white;
+}
+
+.hero-section h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.hero-section p{
+font-size:18px;
+margin-bottom:25px;
+}
+
+.signup-btn{
+background:linear-gradient(90deg,#00c6ff,#ff006a);
+color:white;
+border:none;
+padding:12px 10px;   /* reduced length */
+font-size:16px;
+border-radius:30px;
+cursor:pointer;
+transition:0.3s;
+}
+.signup-btn:hover{
+transform:scale(1.05);
+}                                                                      
+
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <a href="/">Home</a>
+      <a href="{% url 'signup' %}">Sign Up</a>
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'help' %}">Help</a>
+    </div>
+
+    <!-- Page Content -->
+    {% block content %}
+    {% endblock %}
+
+  </body>
+</html>

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align:center; color:white; margin-top:30px;">
+    Vault Opened
+</h2>
+
+<div style="display:flex; justify-content:center; align-items:center; margin-top:40px;">
+
+    <div style="
+        background: rgba(36, 36, 36, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        width: 350px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        color: white;
+        text-align: center;
+    ">
+
+        <h3>{{ entry.password_name }}</h3>
+
+        <p><b>Username:</b> {{ entry.username }}</p>
+
+        <p><b>Password:</b> {{ entry.password }}</p>
+
+        <p><b>Notes:</b> {{ entry.notes }}</p>
+
+        <!-- ✅ SIDE-BY-SIDE BUTTONS -->
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:15px;
+            margin-top:20px;
+        ">
+
+            <a href="{% url 'update_password' entry.id %}" style="flex:1;">
+                <button style="
+                    width:100%;
+                    padding:10px;
+                    border:none;
+                    border-radius:8px;
+                    background: linear-gradient(to right, #00c6ff, #0072ff);
+                    color:white;
+                    cursor:pointer;
+                ">
+                    Update
+                </button>
+            </a>
+
+            <a href="{% url 'delete_password' entry.id %}" style="flex:1;">
+                <button style="
+                    width:100%;
+                    padding:10px;
+                    border:none;
+                    border-radius:8px;
+                    background: linear-gradient(to right, #ff416c, #ff4b2b);
+                    color:white;
+                    cursor:pointer;
+                ">
+                    Delete
+                </button>
+            </a>
+
+        </div>
+
+        <!-- BACK BUTTON -->
+        <div style="margin-top:20px;">
+            <a href="{% url 'dashboard' %}" style="
+                text-decoration:none;
+                color:#00f2fe;
+                font-weight:bold;
+            ">
+                ← Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

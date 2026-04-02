@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="title">Your Password Vault</h1>
+
+<div class="add-btn">
+    <a href="{% url 'add_password' %}">
+        <button class="add-password-btn">Add New Password</button>
+    </a>
+</div>
+
+<div class="card-container">
+
+{% for item in entries %}
+
+<div class="vault-card">
+
+<!-- CLICKABLE VAULT AREA -->
+<a href="{% url 'enter_pin' item.id %}" class="vault-link">
+<h3>{{ item.vault_id }}</h3>
+<p class="unlock-text">Click to Unlock</p>
+</a>
+
+<!-- BUTTONS -->
+<!-- <div class="card-buttons">
+
+<a href="{% url 'update_password' item.id %}">
+<button class="update-btn">Update</button>
+</a>
+
+<a href="{% url 'delete_password' item.id %}">
+<button class="delete-btn">Delete</button>
+</a>
+
+</div> -->
+
+</div>
+
+{% empty %}
+<p class="empty">No passwords saved yet.</p>
+{% endfor %}
+
+</div>
+
+<div class="logout">
+<a href="{% url 'logout' %}">
+<button class="logout-btn">Logout</button>
+</a>
+</div>
+
+{% endblock %}

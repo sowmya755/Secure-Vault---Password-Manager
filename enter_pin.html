@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="display:flex; justify-content:center; align-items:center; height:80vh;">
+
+    <div style="
+        background: rgba(36, 36, 36, 0.7);
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        width: 350px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        color: white;
+    ">
+
+        <h2> Unlock Vault</h2>
+        <p>Enter your PIN</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input type="password" name="pin" placeholder="Enter PIN"
+                style="
+                    padding:10px;
+                    width:80%;
+                    border-radius:8px;
+                    border:none;
+                    margin-top:10px;
+                ">
+
+            <br><br>
+
+            <button type="submit"
+                style="
+                    padding:10px 20px;
+                    border:none;
+                    border-radius:8px;
+                    background: linear-gradient(to right, rgb(134, 252, 252), rgb(250, 120, 141));
+                    color:white;
+                    cursor:pointer;
+                    width:100%;
+                ">
+                Unlock
+            </button>
+        </form>
+
+        {% for message in messages %}
+            <p style="color:red; margin-top:10px;">{{ message }}</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

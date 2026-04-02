@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero-section">
+
+    <h1>Welcome to Password Manager</h1>
+    <p>Securely store and manage your passwords.</p>
+
+    <button onclick="window.location.href='{% url 'signup' %}'" class="signup-btn">
+        Go to Sign Up
+    </button>
+
+</div>
+
+{% endblock %}
